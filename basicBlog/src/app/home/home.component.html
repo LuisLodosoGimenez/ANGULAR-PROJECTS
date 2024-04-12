@@ -1,0 +1,41 @@
+<main class="m-2">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+    @for (article of articles; track $index) {
+      <article
+        class="bg-white shadow rounded overflow-hidden m-2 flex flex-col"
+      >
+        <div class="h-52">
+          <img
+            class="h-full w-full object-cover object-center"
+            src="{{ article.image.src }}"
+            alt="{{ article.image.alt }}"
+          />
+        </div>
+        <div class="space-y-3 p-5 flex-1">
+          <h3 class="text-sm font-semibold text-violet-400">
+            {{ article.theme }}
+          </h3>
+          <h2 class="text-xl font-semibold text-slate-800 leading-tight">
+            {{ article.title }}
+          </h2>
+          <p class="text-slate-500 hidden md:block">
+            {{ article.description }}
+          </p>
+        </div>
+        <div class="flex space-x-2 p-4">
+          <img
+            class="w-10 h-10 rounded-full"
+            src="{{ article.author.image.src }}"
+            alt="{{ article.author.image.alt }}"
+          />
+          <div class="flex-col flex">
+            <span class="font-semibold">{{ article.author.name }}</span>
+            <span class="text-xs font-light hidden md:block">{{
+              article.author.quote
+            }}</span>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</main>
