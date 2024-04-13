@@ -5,6 +5,7 @@ import { HomePageComponent } from './home-page/home-page.component'
 import { UserProfileInitComponent } from './user-profile/user-profile-init/user-profile-init.component'
 import { UserProfileOrderListComponent } from './user-profile/user-profile-order-list/user-profile-order-list.component'
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'
+import { UserProfilePersonalInfoComponent } from './user-profile/user-profile-personal-info/user-profile-personal-info.component'
 
 export const routes: Routes = [
   {
@@ -17,6 +18,14 @@ export const routes: Routes = [
     children: [
       {
         path: '',
+        component: UserProfileInitComponent,
+      },
+      {
+        path: 'personal-info',
+        component: UserProfilePersonalInfoComponent,
+      },
+      {
+        path: 'order-list',
         component: UserProfileOrderListComponent,
       },
     ],
