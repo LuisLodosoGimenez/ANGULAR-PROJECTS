@@ -1,0 +1,169 @@
+<main>
+  <!-- CAROUSEL -->
+  <div class="carousel relative">
+    <div class="carousel-inner">
+      <div class="carousel-item w-full">
+        <img
+          class="h-full w-full carousel-image object-cover"
+          src="https://static.showit.co/1200/LFtCpzrjTR2GKbz7bjqtjQ/76050/fz7a5968.jpg"
+          alt="Slide 1"
+        />
+      </div>
+      <div class="carousel-item w-full">
+        <img
+          class="h-full w-full carousel-image object-cover"
+          src="https://www.adorama.com/alc/wp-content/uploads/2021/04/photography-camera-types-feature.jpg"
+          alt="Slide 2"
+        />
+      </div>
+      <div class="carousel-item w-full">
+        <img
+          class="h-full w-full carousel-image object-cover"
+          src="https://www.apple.com/v/product-red/y/images/meta/product_red__fcz9yyleim2y_og.png?202311272335"
+          alt="Slide 3"
+        />
+      </div>
+    </div>
+    <button
+      class="absolute left-10 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-full"
+      onclick="prevSlide()"
+    >
+      &#10094;
+    </button>
+    <button
+      class="absolute right-10 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-full"
+      onclick="nextSlide()"
+    >
+      &#10095;
+    </button>
+  </div>
+
+  <!-- Categories section -->
+  <div class="bg-white" style="margin: 3rem">
+    <div class="section-header">
+      <svg
+        class="section-icons"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+      >
+        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <path
+          fill="#adc178"
+          d="M345 39.1L472.8 168.4c52.4 53 52.4 138.2 0 191.2L360.8 472.9c-9.3 9.4-24.5 9.5-33.9 .2s-9.5-24.5-.2-33.9L438.6 325.9c33.9-34.3 33.9-89.4 0-123.7L310.9 72.9c-9.3-9.4-9.2-24.6 .2-33.9s24.6-9.2 33.9 .2zM0 229.5V80C0 53.5 21.5 32 48 32H197.5c17 0 33.3 6.7 45.3 18.7l168 168c25 25 25 65.5 0 90.5L277.3 442.7c-25 25-65.5 25-90.5 0l-168-168C6.7 262.7 0 246.5 0 229.5zM144 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"
+        />
+      </svg>
+      <h2 class="text-2xl ml-2 font-bold tracking-tight text-gray-900">
+        Categorías
+      </h2>
+    </div>
+    <div class="grid grid-cols-6">
+      <!-- Electronics Category -->
+      <div class="rounded overflow-hidden shadow-lg relative h-80 w-56">
+        <img
+          class="object-cover opacity-60 block h-full w-full"
+          src="https://www.merchantcapital.co.za/hubfs/Electronic%20Online%20Header-01.jpg"
+          alt="Electronics section"
+        />
+        <div class="px-6 py-4 img-gradient absolute w-full h-full"></div>
+        <div class="text-overlay">
+          <div class="font-bold text-xl mb-2">Electronica</div>
+          <p class="text-base">Portatil, smartphone, auriculares...</p>
+        </div>
+      </div>
+
+      <!-- Sports equipment Category -->
+      <div class="rounded overflow-hidden shadow-lg relative h-80 w-56">
+        <img
+          class="object-cover opacity-60 block h-full w-full"
+          src="https://miro.medium.com/v2/resize:fit:926/1*JgdL4tQiU7_kY5dAQdYvTQ.png"
+          alt="Sports section"
+        />
+        <div class="px-6 py-4 img-gradient absolute w-full h-full"></div>
+        <div class="text-overlay">
+          <div class="font-bold text-xl mb-2">Deportes</div>
+          <p class="text-base">Pelotas, guantes, ropa deportiva...</p>
+        </div>
+      </div>
+
+      <!-- Home Category -->
+      <div class="rounded overflow-hidden shadow-lg relative h-80 w-56">
+        <img
+          class="object-cover opacity-60 block h-full w-full"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_jeSGARGMd-97fEm_dtmHYa55TGO1SCSmtk8Sg7E7CQ&s"
+          alt="Home section"
+        />
+        <div class="px-6 py-4 img-gradient absolute w-full h-full"></div>
+        <div class="text-overlay">
+          <div class="font-bold text-xl mb-2">Hogar</div>
+          <p class="text-base">Muebles, uso diario, decoraciones...</p>
+        </div>
+      </div>
+
+      <!-- Hygiene section -->
+      <div class="rounded overflow-hidden shadow-lg relative h-80 w-56">
+        <img
+          class="object-cover opacity-60 block h-full w-full"
+          src="https://convoyofhope.org/wp-content/uploads/2023/04/Travel-Hygiene-Kits-1.jpg.webp"
+          alt="Hygiene section"
+        />
+        <div class="px-6 py-4 img-gradient absolute w-full h-full"></div>
+        <div class="text-overlay">
+          <div class="font-bold text-xl mb-2">Higiene pers.</div>
+          <p class="text-base">Gel de ducha, jabón, cepillo de dientes...</p>
+        </div>
+      </div>
+
+      <!-- Fashion Category -->
+      <div class="rounded overflow-hidden shadow-lg relative h-80 w-56">
+        <img
+          class="object-cover opacity-60 block h-full w-full"
+          src="https://hips.hearstapps.com/hmg-prod/images/propositos-moda-tendencia-1-1672662382.jpg"
+          alt="Fashion section"
+        />
+        <div class="px-6 py-4 img-gradient absolute w-full h-full"></div>
+        <div class="text-overlay">
+          <div class="font-bold text-xl mb-2">Moda</div>
+          <p class="text-base">Ropa, zapatos, joyería, accesorios...</p>
+        </div>
+      </div>
+
+      <!-- Supermarket section -->
+      <div class="rounded overflow-hidden shadow-lg relative h-80 w-56">
+        <img
+          class="object-cover opacity-60 block h-full w-full"
+          src="https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/202312/MIT_Food-Diabetes-01_0.jpg?itok=Mp8FVJkC"
+          alt="Supermarket section"
+        />
+        <div class="px-6 py-4 img-gradient absolute w-full h-full"></div>
+        <div class="text-overlay">
+          <div class="font-bold text-xl mb-2">Supermercado</div>
+          <p class="text-base">Conservas, frutas, pescados...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white">
+    <div class="mx-auto" style="margin: 3rem">
+      <div class="section-header">
+        <svg
+          class="section-icons"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            fill="#adc178"
+            d="M512 32c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 46.3 364 0 448 0h32c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64H64c123.7 0 224 100.3 224 224v32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V320C100.3 320 0 219.7 0 96z"
+          />
+        </svg>
+        <h2 class="text-2xl ml-2 font-bold tracking-tight text-gray-900">
+          Catálogo nuevo
+        </h2>
+      </div>
+
+      <!--<div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">-->
+      <div id="popular-items-wrapper" class="grid grid-cols-4 gap-4"></div>
+    </div>
+  </div>
+</main>

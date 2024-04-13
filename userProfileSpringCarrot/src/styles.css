@@ -1,0 +1,129 @@
+/* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*  indexCSS.css  */
+
+.carousel {
+  overflow: hidden;
+}
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.carousel-item {
+  flex: 0 0 100%;
+  max-width: 100%;
+  height: 35rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-image {
+  overflow: hidden;
+  align-content: center;
+}
+
+img {
+  align-content: center;
+  overflow: hidden;
+}
+
+.img-gradient {
+  background: linear-gradient(to top, black 0%, white 70%);
+  opacity: 50%;
+  top: 0;
+  left: 0;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 65%;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  color: white; /* Change text color as needed */
+}
+
+.section-icons {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/*  commonCSS.css  */
+
+#search-button {
+  border-top: #9ca3af 2px solid;
+  border-right: #9ca3af 2px solid;
+  border-bottom: #9ca3af 2px solid;
+  border-radius: 0 10px 10px 0;
+
+  height: 2.5rem;
+  width: 10%;
+  background-color: white;
+
+  font-size: 1rem;
+}
+
+#search-input {
+  border: #9ca3af 2px solid;
+  border-radius: 10px 0 0 10px;
+
+  width: 60%;
+  height: 2.5rem;
+}
+
+.truncate-lines-4 {
+  /* Number of lines to show before truncating */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  /* Number of lines to show before truncating */
+}
+
+footer {
+  background-color: #dde5b6;
+  padding: 3rem;
+}
+
+.footer-section-title {
+  margin: 0 0 0.5rem 0;
+  font-weight: bold;
+}
+
+.footer-link-wrapper {
+  margin: 1rem;
+}
+
+.footer-left {
+  margin-right: 2rem;
+}
+
+.footer-right {
+  margin-left: 2rem;
+}
+
+/*  tailwindCSS.css  */
+
+.truncate-lines-4 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6; /* Number of lines to show before truncating */
+}
+
+.truncate-lines-4 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* Number of lines to show before truncating */
+}
