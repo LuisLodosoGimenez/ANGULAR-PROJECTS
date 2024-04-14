@@ -4,6 +4,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* MV */
+
+#registerandlogin-input {
+  border: #9ca3af 2px solid;
+  border-radius: 8px 8px 8px 8px;
+  width: 70%;
+  height: 2rem;
+  margin-left: 1rem;
+  vertical-align: middle;
+}
+
+#registerandlogin-button {
+  border: #9ca3af 2px solid;
+  border-radius: 10px 10px 10px 10px;
+  margin: 2rem;
+  background-color: #dde5b6;
+  font-size: 1rem;
+}
+
 /*  indexCSS.css  */
 
 .carousel {

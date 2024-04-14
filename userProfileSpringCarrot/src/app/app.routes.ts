@@ -6,6 +6,8 @@ import { UserProfileInitComponent } from './user-profile/user-profile-init/user-
 import { UserProfileOrderListComponent } from './user-profile/user-profile-order-list/user-profile-order-list.component'
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'
 import { UserProfilePersonalInfoComponent } from './user-profile/user-profile-personal-info/user-profile-personal-info.component'
+import { LogInComponent } from './log-in/log-in.component'
+import { SignInComponent } from './sign-in/sign-in.component'
 
 export const routes: Routes = [
   {
@@ -33,5 +35,13 @@ export const routes: Routes = [
   {
     path: 'shopping-cart',
     component: ShoppingCartComponent,
+  },
+  {
+    path: 'log-in',
+    component: LogInComponent,
+  },
+  {
+    path: 'sign-in',
+    component: SignInComponent,
   },
 ]
