@@ -24,14 +24,14 @@
             border-radius: 10px 10px 10px 10px;
             box-shadow:
               0 4px 6px -1px rgb(0 0 0 / 0.1),
-              0 2px 4px -2px rgb(0 0 0 /  0.1);
+              0 2px 4px -2px rgb(0 0 0 / 0.1);
           "
         >
           <div class="grid grid-cols-2 space-y-5">
             <p style="font-family: Arial, Helvetica, sans-serif; margin-top: 1.5rem">NickName</p>
             <input id="registerandlogin-input" type="text" formControlName="nickname" required />
             <p style="font-family: Arial, Helvetica, sans-serif">Contraseña</p>
-            <input id="registerandlogin-input" type="text" formControlName="contraseña" required />
+            <input id="registerandlogin-input" type="password" formControlName="contraseña" required />
           </div>
           <button
             (click)="iniciarSesion()"
@@ -42,16 +42,17 @@
           >
             <div class="flex items-center text-center p-2">Iniciar Sesión</div>
           </button>
-          <div class="space-x-1 flex">
+          <div class="text-red-700">{{ textoFallo }}</div>
+
+          <div class="space-x-1 flex mt-4">
             <div>¿Aún no tienes una cuenta?</div>
+            <a href="/sign-in" class="font-semibold text-black hover:text-white">Regístrate</a>
             <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 100">
               <button
                 [disabled]="formularioInicioSesion.invalid"
                 routerLink="/sign-in"
                 class="font-semibold text-black hover:text-white"
-              >
-                Regístrate
-              </button>
+              ></button>
             </p>
           </div>
         </div>

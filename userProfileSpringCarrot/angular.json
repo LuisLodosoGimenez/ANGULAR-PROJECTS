@@ -8,11 +8,14 @@
       "schematics": {},
       "root": "",
       "sourceRoot": "src",
+      
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
+          
           "options": {
+            
             "outputPath": "dist/user-profile-spring-carrot",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -54,6 +57,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "options": {"proxyConfig": "src/proxy.conf.json"},
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
@@ -69,6 +73,7 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "buildTarget": "userProfileSpringCarrot:build"
+            
           }
         },
         "test": {

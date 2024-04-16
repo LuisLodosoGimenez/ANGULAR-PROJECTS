@@ -18,12 +18,13 @@ export class AppComponent implements OnInit {
   getAllPosts() {
     this.apiService.getPosts().subscribe({
       next: (response) => console.log(response),
+      error: (error) => null,
     });
   }
 
   logIn() {
     let body = {
-      nick: 'Ana123',
+      nick: 'ana123',
       password: 'contraseña4',
     };
 
