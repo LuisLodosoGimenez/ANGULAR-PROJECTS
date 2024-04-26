@@ -13,5 +13,5 @@ import { ArticlesService } from './home/articles.service'
 })
 export class AppComponent {
   arroba = '@'
-  title = 'basicBlog'
+  title = 'BasicBlog'
 }
