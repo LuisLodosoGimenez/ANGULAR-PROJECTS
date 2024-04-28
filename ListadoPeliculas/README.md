@@ -40,7 +40,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 --TO_DO:
-    ·Ajustar lista para que muestre todos los títulos correctamente (hacer para que cuando se salga del margen aparezca el cursor)    -->>    crear tamaño fijo para la tabla donde se mostrará la lista
+    ·Ajustar lista para que muestre todos los títulos correctamente (hacer para que cuando se salga del margen aparezca el cursor)    -->>    crear tamaño fijo para la tabla donde se mostrará la lista.
+    ·Añadir emoticono de lopa en la barra de búsqueda.
 
 --OPCIONAL:
     ·Hacer diseño responsive

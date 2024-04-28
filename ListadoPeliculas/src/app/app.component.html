@@ -5,21 +5,46 @@
     <h1 class="text-slate-200 italic font-bold text-3xl">Listado películas</h1>
   </header>
 
-  <body class="flex-1 p-4 flex flex-col items-center mt-5">
+  <body
+    class="flex-1 p-4 flex flex-col"
+    style="
+      background-image: url('https://image.tmdb.org/t/p/w780{{ bgImageUrl }}');
+    "
+  >
     <input
       type="text"
       [formControl]="textSearch"
+      (keyup)="getMovies()"
       placeholder="Buscar películas por nombre"
-      class="bg-slate-200 w-7/12 h-10 rounded-xl p-4 focus:ring-1 focus:ring-indigo-200 outline-slate-500"
+      class="bg-slate-200 w-7/12 h-10 rounded-xl p-4 focus:ring-1 focus:ring-indigo-200 outline-slate-500 mx-auto"
     />
-    <button class="text-slate-200" (click)="getMovies()">
-      OBTENER PELÍCULAS
-    </button>
-    <div class="space-y-3 text-slate-200 mt-5">
-      <H1>LISTA PELICULAS</H1>
-      @for (item of returnMovies(); track $index) {
-        <p>{{ item.title }}</p>
-      }
-    </div>
+
+    @if (textSearch.value) {
+      <div
+        class="mt-10 ml-20 p-5 text-slate-200 border-white border w-1/2 rounded-lg bg-slate-900"
+      >
+        <div class="table-header-group text-4xl font-semibold h-12">
+          Películas coincidentes con "{{ textSearch.value }}" :
+        </div>
+        <table
+          class="space-y-3 mt-4 min-w-full text-left divide-y divide-slate-900 text-base"
+        >
+          @for (item of returnMovies(); track $index) {
+            <tr class="hover:bg-slate-800">
+              <button
+                (mouseover)="changeBgImageUrl(item.poster_path!)"
+                class="my-0.5 w-full text-left"
+              >
+                {{ item.title }}
+              </button>
+            </tr>
+          }
+        </table>
+      </div>
+    } @else {
+      <p class="text-slate-200 mx-auto mt-3">
+        ¿Escribe el nómbre de la película que deseas encontrar!
+      </p>
+    }
   </body>
 </main>
