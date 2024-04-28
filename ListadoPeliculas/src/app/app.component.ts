@@ -6,26 +6,35 @@ import {
   Movie,
   MovieSearchByName,
 } from './models/interfaces/movie-search-by-name.interface'
+import { ReactiveFormsModule, FormControl } from '@angular/forms'
+import { CommonModule } from '@angular/common'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule, RouterOutlet, ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'ListadoPeliculas'
   static movieSearch: MovieSearchByName = new MovieSearch()
+  textSearch = new FormControl()
+
+  constructor(
+    private movieApiService: MovieApiService,
+    private router: Router,
+  ) {}
 
   returnMovies(): Movie[] {
     return AppComponent.movieSearch.results
   }
 
-  constructor(private movieApiService: MovieApiService) {}
-
   getMovies() {
-    this.movieApiService.getMovies().subscribe({
+    this.router.navigate(['/about'])
+    console.log(this.textSearch.value)
+    this.movieApiService.getMovies(this.textSearch.value).subscribe({
       next: (response) => {
         AppComponent.movieSearch = response
         console.log(response)

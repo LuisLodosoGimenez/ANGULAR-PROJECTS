@@ -13,8 +13,10 @@ export class MovieApiService {
 
   constructor(private http: HttpClient) {}
 
-  getMovies() {
-    const query = encodeURIComponent('FALDA de')
+  getMovies(textSearch?: string) {
+    textSearch = textSearch ?? ''
+    textSearch
+    const query = encodeURIComponent(textSearch)
 
     const headers = new HttpHeaders({
       accept: 'application/json',

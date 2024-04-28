@@ -25,3 +25,23 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+-DE PRIMERAS LISTA DE PELÍCULAS ENTERA.
+-CUANDO SE PINCHA SOBRE UNA PELÍCULA SE CAMBIA LA RUTA.
+    ·El listado queda apartado a la izquierda (ver como configurar los elemenos dependiendo de la ruta).
+    ·A la derecha se mostrará la información de la película seleccionada
+
+
+
+--TO_DO:
+    ·Ajustar lista para que muestre todos los títulos correctamente (hacer para que cuando se salga del margen aparezca el cursor)    -->>    crear tamaño fijo para la tabla donde se mostrará la lista
+
+--OPCIONAL:
+    ·Hacer diseño responsive
+    ·Cuando se pasa el ratón encima del título de una película el fondo de toda la página se convierta en la imagen de la película.
