@@ -27,6 +27,7 @@ export class AppComponent {
   title = 'ListadoPeliculas'
   static movieSearch: MovieSearchByName = new MovieSearch()
   textSearch = new FormControl()
+  InitImageUrl = 'https://image.tmdb.org/t/p/w1280'
   bgImageUrl = ''
   searchState: State = State.inactive
   infoState: State = State.inactive
