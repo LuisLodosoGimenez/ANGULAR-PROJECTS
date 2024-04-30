@@ -1,5 +1,6 @@
 <main class="bg-slate-900 h-dvh flex-col flex">
-  <header (click)="getLanguages()"
+  <header
+    (click)="getLanguages()"
     class="bg-slate-950 shadow px-6 rounded-b-lg flex h-16 min-h-16 items-center justify-center"
   >
     <h1 #texto class="text-slate-200 italic font-bold text-3xl">
@@ -12,7 +13,7 @@
   </script>
 
   <body
-    class=" p-4 flex-1 flex flex-col"
+    class="p-4 flex-1 flex flex-col"
     style="
     background-size: cover;
       background-image: url('{{ InitImageUrl }}{{ bgImageUrl }}');"
@@ -53,7 +54,7 @@
           #lista_pelis
           id="listaPelis"
           (mouseout)="mouseOutList()"
-          class="transition-all duration-1000 bg-opacity-70 ml-40 p-5 w-2/4 text-slate-200 border-white border rounded-lg bg-slate-900"
+          class=" hidden md:block  transition-all duration-1000 bg-opacity-70 ml-40 p-5 w-2/4 text-slate-200 border-white border rounded-lg bg-slate-900"
         >
           <div class="table-header-group font-semibold h-12">
             <h1 #movie_list_title class="transition-all duration-1000 text-4xl">
@@ -78,14 +79,16 @@
             }
           </table>
         </div>
-        <script></script>
-        <div  class="flex-1 p-20 flex-col justify-center">
+        <div class="flex-1 p-20 flex-col justify-center">
           @if (movie && infoState) {
             <div
               id="InfoPelis"
-              class=" flex justify-start max-h-[30rem] relative text-slate-200 border-white border rounded-lg bg-slate-900 overflow-hidden"
+              class="flex justify-start  max-h-[30rem] relative text-slate-200 border-white border rounded-lg bg-slate-900 overflow-hidden"
             >
-              <button (click)="closeMovieInfo()" class="absolute top-2 end-2 size-8">
+              <button
+                (click)="closeMovieInfo()"
+                class="absolute top-2 end-2 size-8"
+              >
                 <svg
                   data-slot="icon"
                   fill="none"
@@ -103,18 +106,32 @@
                 </svg>
               </button>
 
-              <img
-                class="object-contain h-full"
-                src="https://image.tmdb.org/t/p/w342{{ movie.poster_path }}"
+              <div class="bg-red-100 object-fill">
+
+                <img
+                class=" h-full bg-green-300"
+                src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
                 alt=""
               />
+              </div>
 
-              <div class="w-full p-8">
+
+              
+
+              
+
+              <div class="w-full p-8 space-y-1">
                 <span class="font-bold text-3xl">{{ movie.title }} </span>
-                <span class="font-sans text-base">
-                  ({{ movieLenguage }})</span
-                >
+                <span class="font-sans text-base"> ({{ movieLenguage }})</span>
                 <h2 class="font-semibold text-lg">{{ movie.release_date }}</h2>
+
+                <div >
+                  @for (genre of movieGenres; track $index) {
+                    <span class="underline mr-2">#{{ genre }}</span>
+                  }
+                </div>
+                <div class="pt-6">{{movie.overview}}</div>
+                
               </div>
             </div>
           }

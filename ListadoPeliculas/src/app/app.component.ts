@@ -33,8 +33,10 @@ export class AppComponent {
   searchState: State = State.inactive
   infoState: State = State.inactive
   movie?: Movie = undefined
-  lenguagesMap : Map<string,string> = new Map<string,string>
-  movieLenguage! :string
+  lenguagesMap: Map<string, string> = new Map<string, string>()
+  genresMap: Map<number, string> = new Map<number, string>()
+  movieLenguage!: string
+  movieGenres: string[] =[]
 
   @ViewChild("lista_pelis") movies_list!: ElementRef
   @ViewChild("movie_list_title") movie_list_title!: ElementRef
@@ -47,6 +49,7 @@ export class AppComponent {
     private renderer2: Renderer2,
   ) {
     this.getLanguages()
+    this.getGenres()
   }
 
   mouseOverMovieTitle(url: string) {
@@ -62,6 +65,7 @@ export class AppComponent {
   clickMovieTitle(movie: Movie) {
     this.movie = movie
     this.getMovieLenguage()
+    this.getMovieGenres()
 
     this.infoState = 1
     this.changeLeftMarginOfList()
@@ -111,10 +115,21 @@ export class AppComponent {
     return AppComponent.movieSearch.results
   }
 
-  getMovieLenguage(){
-
-    this.movieLenguage = this.lenguagesMap.get(this.movie!.original_language!)?? ''
+  getMovieLenguage() {
+    this.movieLenguage =
+      this.lenguagesMap.get(this.movie!.original_language!) ?? ""
     console.log(this.movieLenguage)
+  }
+
+  getMovieGenres(){
+    this.movieGenres = []
+    this.movie!.genre_ids.forEach((genre)=>{
+      console.log(genre)
+      console.log(this.genresMap.get(genre))
+
+      this.movieGenres.push(this.genresMap.get(genre)!)
+      
+    } )
   }
 
   getMovies() {
@@ -133,19 +148,32 @@ export class AppComponent {
     })
   }
 
-  getLanguages(){
-    console.log('GET LANGUAJES')
-    this.movieApiService.getLanguages().subscribe(
-      {
-        next: (languages) => {
-          languages.forEach((language)=>{
-            this.lenguagesMap.set(language.iso_639_1,language.english_name)})
+  getLanguages() {
+    this.movieApiService.getLanguages().subscribe({
+      next: (languages) => {
+        console.log(languages)
+        languages.forEach((language) => {
+          this.lenguagesMap.set(language.iso_639_1, language.english_name)
+        })
 
-            console.log(this.lenguagesMap)
-          },
-      
-        error: (error) => console.log(error),
-      }
-    )
+      },
+
+      error: (error) => console.log(error),
+    })
+  }
+
+
+  getGenres() {
+    this.movieApiService.getGenres().subscribe({
+      next: (genres) => {
+        console.log(genres)
+        genres.genres.forEach((genre) => {
+          this.genresMap.set(genre.id,genre.name)
+        })
+        console.log(this.genresMap)
+      },
+
+      error: (error) => console.log(error),
+    })
   }
 }
