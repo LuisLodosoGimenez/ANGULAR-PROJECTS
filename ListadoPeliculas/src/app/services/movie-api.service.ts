@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { MovieSearchByName } from '../models/interfaces/movie-search-by-name.interface'
+import { Languages } from '../models/interfaces/languages-api-list.interface'
 
 @Injectable({
   providedIn: 'root',
@@ -25,6 +26,19 @@ export class MovieApiService {
 
     return this.http.get<MovieSearchByName>(
       `${this.API_URL}/search/movie?query=${query}&include_adult=true&language=en-US&region=ESP`,
+      { headers },
+    )
+  }
+
+
+  getLanguages(){
+    const headers = new HttpHeaders({
+      accept: "application/json",
+      Authorization: `Bearer ${this.API_KEY}`,
+    })
+
+    return this.http.get<Languages>(
+      `${this.API_URL}/configuration/languages`,
       { headers },
     )
   }
