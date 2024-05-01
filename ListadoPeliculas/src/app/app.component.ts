@@ -1,17 +1,28 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core'
-import { RouterOutlet } from '@angular/router'
-import { MovieApiService } from './services/movie-api.service'
-import { MovieSearch } from './models/classes/movie-search.class'
+import {
+  AfterViewInit,
+  CUSTOM_ELEMENTS_SCHEMA,
+  Component,
+  ComponentRef,
+  ElementRef,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from "@angular/core"
+import { RouterOutlet } from "@angular/router"
+import { MovieApiService } from "./services/movie-api.service"
+import { MovieSearch, Prueba } from "./models/classes/movie-search.class"
 import {
   Movie,
   MovieSearchByName,
-} from './models/interfaces/movie-search-by-name.interface'
-import { ReactiveFormsModule, FormControl } from '@angular/forms'
-import { CommonModule } from '@angular/common'
-import { Router } from '@angular/router'
-import { TestBed } from '@angular/core/testing'
-import { style } from '@angular/animations'
-import { timeout } from 'rxjs'
+} from "./models/interfaces/movie-search-by-name.interface"
+import { ReactiveFormsModule, FormControl } from "@angular/forms"
+import { CommonModule } from "@angular/common"
+import { Router } from "@angular/router"
+import { TestBed } from "@angular/core/testing"
+import { style } from "@angular/animations"
+import { timeout } from "rxjs"
+import { MovieDetailsComponent } from "./pages/movie-details/movie-details.component"
+import { PruebaComponent } from "./pages/prueba/prueba.component"
 
 enum State {
   active = 1,
@@ -21,38 +32,43 @@ enum State {
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    ReactiveFormsModule,
+    MovieDetailsComponent,
+    PruebaComponent,
+  ],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppComponent {
   title = "ListadoPeliculas"
-  static movieSearch: MovieSearchByName = new MovieSearch()
+  movieSearch: MovieSearchByName = new MovieSearch()
   textSearch = new FormControl()
   InitImageUrl = "https://image.tmdb.org/t/p/w1280"
   bgImageUrl = ""
   searchState: State = State.inactive
   infoState: State = State.inactive
   movie?: Movie = undefined
-  lenguagesMap: Map<string, string> = new Map<string, string>()
+  languagesMap: Map<string, string> = new Map<string, string>()
   genresMap: Map<number, string> = new Map<number, string>()
-  movieLenguage!: string
-  movieGenres: string[] =[]
+  movieLanguage!: string
+  movieGenres: string[] = []
+  prueba: Prueba = new Prueba("empiece")
 
   @ViewChild("lista_pelis") movies_list!: ElementRef
   @ViewChild("movie_list_title") movie_list_title!: ElementRef
   @ViewChild("movie_title") movie_title!: ElementRef
   @ViewChild("texto") texto!: ElementRef
-
+  @ViewChild("prueba") pruebaCompnente!: ComponentRef<PruebaComponent>
 
   constructor(
     private movieApiService: MovieApiService,
     private router: Router,
     private renderer2: Renderer2,
-  ) {
-    this.getLanguages()
-    this.getGenres()
-  }
+  ) {}
 
   mouseOverMovieTitle(url: string) {
     this.changeBgImageUrl(url)
@@ -66,22 +82,17 @@ export class AppComponent {
 
   clickMovieTitle(movie: Movie) {
     this.movie = movie
-    this.getMovieLenguage()
-    this.getMovieGenres()
 
     this.infoState = 1
     this.changeMovieList()
   }
 
-  changeMovieList(){
-    this.changeLeftMarginOfList()
-    this.changeWidthOfList()
-    this.changeListTitle()
-    this.changeMoviesTitle()
-  }
-
   closeMovieInfo() {
     this.infoState = 0
+    this.changeMovieList()
+  }
+
+  changeMovieList() {
     this.changeLeftMarginOfList()
     this.changeWidthOfList()
     this.changeListTitle()
@@ -122,13 +133,11 @@ export class AppComponent {
     if (this.textSearch.value == "") {
       this.searchState = State.inactive
     } else this.searchState = State.active
-    
-
-
+  
     this.router.navigate(["/about"])
     this.movieApiService.getMovies(this.textSearch.value).subscribe({
       next: (response) => {
-        AppComponent.movieSearch = response
+        this.movieSearch = response
       },
 
       error: (error) => console.log(error),
@@ -136,36 +145,6 @@ export class AppComponent {
 
     setTimeout(() => {
       this.changeMovieList()
-    }, 500);
-    
-  }
-
-  getLanguages() {
-    this.movieApiService.getLanguages().subscribe({
-      next: (languages) => {
-        console.log(languages)
-        languages.forEach((language) => {
-          this.lenguagesMap.set(language.iso_639_1, language.english_name)
-        })
-
-      },
-
-      error: (error) => console.log(error),
-    })
-  }
-
-
-  getGenres() {
-    this.movieApiService.getGenres().subscribe({
-      next: (genres) => {
-        console.log(genres)
-        genres.genres.forEach((genre) => {
-          this.genresMap.set(genre.id,genre.name)
-        })
-        console.log(this.genresMap)
-      },
-
-      error: (error) => console.log(error),
-    })
+    }, 500)
   }
 }

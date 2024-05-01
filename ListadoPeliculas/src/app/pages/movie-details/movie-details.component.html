@@ -1,1 +1,44 @@
-<p>movie-details works!</p>
+<div
+  id="InfoPelis"
+  class="flex justify-start max-h-[30rem] relative text-slate-200 border-white border rounded-lg bg-slate-900 overflow-hidden"
+>
+  <button (click)="close()"  class="absolute top-3 end-3 size-8">
+    <svg
+    
+      data-slot="icon"
+      fill="none"
+      stroke-width="1.5"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M6 18 18 6M6 6l12 12"
+      ></path>
+    </svg>
+  </button>
+
+  <div class="object-fill">
+    <img
+      class="h-full"
+      src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
+      alt=""
+    />
+  </div>
+
+  <div class="w-full p-8 space-y-1 overflow-y-auto">
+    <span class="font-bold text-3xl">{{ movie.title }} </span>
+    <span class="font-sans text-base"> ({{ getLanguage() }})</span>
+    <h2 class="font-semibold text-lg">{{ movie.release_date }}</h2>
+
+    <div>
+      @for (genre of getGenres(); track $index) {
+        <span class="underline mr-2">#{{ genre }}</span>
+      }
+    </div>
+    <div class="pt-6 overflow-y-auto">{{ movie.overview }}</div>
+  </div>
+</div>

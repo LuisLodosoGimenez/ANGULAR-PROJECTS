@@ -25,3 +25,11 @@ export class MovieSearch implements MovieSearchByName {
     total_results
   }
 }
+
+export class Prueba{
+  prueba: string
+
+  constructor(prueba: string){
+    this.prueba =prueba
+  }
+}

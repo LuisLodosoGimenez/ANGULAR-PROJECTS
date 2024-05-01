@@ -31,25 +31,5 @@ export class MovieApiService {
     )
   }
 
-  getLanguages() {
-    const headers = new HttpHeaders({
-      accept: "application/json",
-      Authorization: `Bearer ${this.API_KEY}`,
-    })
-
-    return this.http.get<Languages>(`${this.API_URL}/configuration/languages`, {
-      headers,
-    })
-  }
-
-  getGenres() {
-    const headers = new HttpHeaders({
-      accept: "application/json",
-      Authorization: `Bearer ${this.API_KEY}`,
-    })
-
-    return this.http.get<Genres>(`${this.API_URL}/genre/movie/list`, {
-      headers,
-    })
-  }
+  
 }
