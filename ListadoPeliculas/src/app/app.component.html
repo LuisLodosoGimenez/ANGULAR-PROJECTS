@@ -2,7 +2,7 @@
   <header
     class="bg-slate-950 shadow px-6 rounded-b-lg flex h-16 min-h-16 items-center justify-center"
   >
-    <h1 #texto class="text-slate-200 italic font-bold text-3xl">
+    <h1 #text class="text-slate-200 italic font-bold text-3xl">
       Listado películas
     </h1>
   </header>
@@ -50,8 +50,7 @@
         @if(searchState){
 
           <div
-          #lista_pelis
-          id="listaPelis"
+          #movie_list
           (mouseout)="mouseOutList()"
           class="  transition-all duration-1000 bg-opacity-70 ml-40 p-5 w-2/4 text-slate-200 border-white border rounded-lg bg-slate-900"
         >

@@ -9,8 +9,8 @@ import { Genres } from '../models/interfaces/genres-api-list.interface'
   providedIn: "root",
 })
 export class MovieApiService {
-  API_URL = "https://api.themoviedb.org/3"
-  API_KEY =
+  private API_URL = "https://api.themoviedb.org/3"
+  private API_KEY =
     "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OTMwMDNkMDUxZjI2ZjJiMDliZTA2OThjNDcxZjFlZSIsInN1YiI6IjY2MmI3ZDJkNmUwZDcyMDExYjFmYTg4YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tYeg7zoJbf1sZSRGog1fqIqBFLgbqrPK2EVCK84a3lc"
 
   constructor(private http: HttpClient) {}

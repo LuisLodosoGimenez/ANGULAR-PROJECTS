@@ -11,7 +11,6 @@ import {
 } from "@angular/core"
 import { RouterOutlet } from "@angular/router"
 import { MovieApiService } from "./services/movie-api.service"
-import { MovieSearch, Prueba } from "./models/classes/movie-search.class"
 import {
   Movie,
   MovieSearchByName,
@@ -23,7 +22,6 @@ import { TestBed } from "@angular/core/testing"
 import { style } from "@angular/animations"
 import { timeout } from "rxjs"
 import { MovieDetailsComponent } from "./pages/movie-details/movie-details.component"
-import { PruebaComponent } from "./pages/prueba/prueba.component"
 
 enum State {
   active = 1,
@@ -38,7 +36,6 @@ enum State {
     RouterOutlet,
     ReactiveFormsModule,
     MovieDetailsComponent,
-    PruebaComponent,
   ],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",
@@ -46,7 +43,7 @@ enum State {
 })
 export class AppComponent {
   title = "ListadoPeliculas"
-  movieSearch: MovieSearchByName = new MovieSearch()
+  movieSearch!: MovieSearchByName
   textSearch = new FormControl()
   InitImageUrl = "https://image.tmdb.org/t/p/w1280"
   searchState: State = State.inactive
@@ -54,11 +51,10 @@ export class AppComponent {
   movie?: Movie = undefined
 
   @ViewChild("body") body!: ElementRef
-  @ViewChild("lista_pelis") movies_list!: ElementRef
+  @ViewChild("movie_list") movies_list!: ElementRef
   @ViewChild("movie_list_title") movie_list_title!: ElementRef
   @ViewChild("movie_title") movie_title!: ElementRef
-  @ViewChild("texto") texto!: ElementRef
-  @ViewChild("prueba") pruebaCompnente!: ComponentRef<PruebaComponent>
+  @ViewChild("text") titleText!: ElementRef
 
   constructor(
     private movieApiService: MovieApiService,
@@ -68,7 +64,7 @@ export class AppComponent {
 
   mouseOverMovieTitle(url: string) {
     this.changeBgImageUrl(url)
-    const textoo = this.texto.nativeElement
+    const textoo = this.titleText.nativeElement
     this.renderer2.setStyle(textoo, "color", "red")
   }
 
@@ -83,7 +79,6 @@ export class AppComponent {
 
   clickMovieTitle(movie: Movie) {
     this.movie = movie
-
     this.infoState = 1
     this.changeMovieList()
   }
@@ -134,15 +129,11 @@ export class AppComponent {
     )
   }
 
-  //todo (delete movieSearch????)
-
   getMovies() {
-    console.log(this.searchState)
     if (this.textSearch.value == "") {
       this.searchState = State.inactive
     } else this.searchState = State.active
 
-    this.router.navigate(["/about"])
     this.movieApiService.getMovies(this.textSearch.value).subscribe({
       next: (response) => {
         this.movieSearch = response
