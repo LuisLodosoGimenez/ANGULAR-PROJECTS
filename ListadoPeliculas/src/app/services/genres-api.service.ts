@@ -31,7 +31,6 @@ export class GenresApiService {
         genres.genres.forEach((genre) => {
           this.genresMap.set(genre.id, genre.name)
         })
-        console.log(this.genresMap)
       },
 
       error: (error) => console.log(error),

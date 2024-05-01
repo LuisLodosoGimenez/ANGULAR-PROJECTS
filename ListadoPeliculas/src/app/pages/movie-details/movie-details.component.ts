@@ -31,7 +31,6 @@ export class MovieDetailsComponent {
   }
 
   getLanguage(): string {
-    console.log('GET LANGAUAGE')
     return this.languagesApiService.getLanguage(this.movie.original_language)
   }
 }

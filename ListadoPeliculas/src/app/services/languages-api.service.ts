@@ -28,7 +28,6 @@ export class LanguagesApiService {
         languages.forEach((language) => {
           this.languagesMap.set(language.iso_639_1, language.english_name)
         })
-        console.log(this.languagesMap)
       },
 
       error: (error) => console.log(error),

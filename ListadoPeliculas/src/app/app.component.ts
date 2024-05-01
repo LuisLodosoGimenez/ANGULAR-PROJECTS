@@ -7,6 +7,7 @@ import {
   OnInit,
   Renderer2,
   ViewChild,
+  viewChild,
 } from "@angular/core"
 import { RouterOutlet } from "@angular/router"
 import { MovieApiService } from "./services/movie-api.service"
@@ -48,16 +49,11 @@ export class AppComponent {
   movieSearch: MovieSearchByName = new MovieSearch()
   textSearch = new FormControl()
   InitImageUrl = "https://image.tmdb.org/t/p/w1280"
-  bgImageUrl = ""
   searchState: State = State.inactive
   infoState: State = State.inactive
   movie?: Movie = undefined
-  languagesMap: Map<string, string> = new Map<string, string>()
-  genresMap: Map<number, string> = new Map<number, string>()
-  movieLanguage!: string
-  movieGenres: string[] = []
-  prueba: Prueba = new Prueba("empiece")
 
+  @ViewChild("body") body!: ElementRef
   @ViewChild("lista_pelis") movies_list!: ElementRef
   @ViewChild("movie_list_title") movie_list_title!: ElementRef
   @ViewChild("movie_title") movie_title!: ElementRef
@@ -77,7 +73,12 @@ export class AppComponent {
   }
 
   changeBgImageUrl(url: string) {
-    this.bgImageUrl = url
+    const body = this.body.nativeElement
+    this.renderer2.setStyle(
+      body,
+      "background-image",
+      'url("'+this.InitImageUrl + url+'")',
+    )
   }
 
   clickMovieTitle(movie: Movie) {
@@ -125,15 +126,22 @@ export class AppComponent {
   }
 
   mouseOutList() {
-    this.bgImageUrl = ""
+    const body = this.body.nativeElement
+    this.renderer2.setStyle(
+      body,
+      "background-image",
+      'url("")',
+    )
   }
+
+  //todo (delete movieSearch????)
 
   getMovies() {
     console.log(this.searchState)
     if (this.textSearch.value == "") {
       this.searchState = State.inactive
     } else this.searchState = State.active
-  
+
     this.router.navigate(["/about"])
     this.movieApiService.getMovies(this.textSearch.value).subscribe({
       next: (response) => {
