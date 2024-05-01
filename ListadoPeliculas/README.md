@@ -25,20 +25,3 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-
-
-
-------------------------------------------------------------------------------------------------------------------
-
-
-
--CUANDO SE PINCHA SOBRE UNA PELÍCULA SE CAMBIA LA RUTA.
-    ·El listado queda apartado a la izquierda (ver como configurar los elemenos dependiendo de la ruta).
-
-
---TODO: CAMBIAR BIEN LA IMAGEN DE PELI DE FONDO
-
-
---OPCIONAL:
-    ·Hacer diseño responsive
