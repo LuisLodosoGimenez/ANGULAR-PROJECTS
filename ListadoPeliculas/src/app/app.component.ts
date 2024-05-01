@@ -117,27 +117,6 @@ export class AppComponent {
     this.bgImageUrl = ""
   }
 
-  returnMovies(): Movie[] {
-    return AppComponent.movieSearch.results
-  }
-
-  getMovieLenguage() {
-    this.movieLenguage =
-      this.lenguagesMap.get(this.movie!.original_language!) ?? ""
-    console.log(this.movieLenguage)
-  }
-
-  getMovieGenres(){
-    this.movieGenres = []
-    this.movie!.genre_ids.forEach((genre)=>{
-      console.log(genre)
-      console.log(this.genresMap.get(genre))
-
-      this.movieGenres.push(this.genresMap.get(genre)!)
-      
-    } )
-  }
-
   getMovies() {
     console.log(this.searchState)
     if (this.textSearch.value == "") {
