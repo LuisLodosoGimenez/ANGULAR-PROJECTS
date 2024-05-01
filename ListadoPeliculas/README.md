@@ -37,6 +37,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     ·El listado queda apartado a la izquierda (ver como configurar los elemenos dependiendo de la ruta).
 
 
+--TODO: CAMBIAR BIEN LA IMAGEN DE PELI DE FONDO
+
 
 --OPCIONAL:
     ·Hacer diseño responsive

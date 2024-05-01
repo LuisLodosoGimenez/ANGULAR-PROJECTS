@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common'
 import { Router } from '@angular/router'
 import { TestBed } from '@angular/core/testing'
 import { style } from '@angular/animations'
+import { timeout } from 'rxjs'
 
 enum State {
   active = 1,
@@ -43,6 +44,7 @@ export class AppComponent {
   @ViewChild("movie_title") movie_title!: ElementRef
   @ViewChild("texto") texto!: ElementRef
 
+
   constructor(
     private movieApiService: MovieApiService,
     private router: Router,
@@ -68,6 +70,10 @@ export class AppComponent {
     this.getMovieGenres()
 
     this.infoState = 1
+    this.changeMovieList()
+  }
+
+  changeMovieList(){
     this.changeLeftMarginOfList()
     this.changeWidthOfList()
     this.changeListTitle()
@@ -133,10 +139,12 @@ export class AppComponent {
   }
 
   getMovies() {
+    console.log(this.searchState)
     if (this.textSearch.value == "") {
       this.searchState = State.inactive
-      this.infoState = State.inactive
     } else this.searchState = State.active
+    
+
 
     this.router.navigate(["/about"])
     this.movieApiService.getMovies(this.textSearch.value).subscribe({
@@ -146,6 +154,11 @@ export class AppComponent {
 
       error: (error) => console.log(error),
     })
+
+    setTimeout(() => {
+      this.changeMovieList()
+    }, 500);
+    
   }
 
   getLanguages() {
